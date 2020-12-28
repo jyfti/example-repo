@@ -1,0 +1,22 @@
+name: Open PRs to Slack
+
+on:
+  schedule:
+    - cron: '0 10 * * *'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2
+
+      - name: Install npm packages
+        run: npm install -g @jyfti/cli
+
+      - name: Run workflow
+        run: jyfti run https://raw.githubusercontent.com/jyfti/jyfti/master/workflows/open-prs-to-slack.json jyfti example-repo
