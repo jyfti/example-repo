@@ -8,6 +8,7 @@ on:
 jobs:
   workflow:
     runs-on: ubuntu-latest
+    environment: Slack
 
     steps:
       - uses: actions/checkout@v2
@@ -19,4 +20,4 @@ jobs:
         run: npm install @jyfti/cli
 
       - name: Run workflow
-        run: npx jyfti run https://raw.githubusercontent.com/jyfti/jyfti/master/workflows/open-prs-to-slack.json jyfti example-repo
+        run: npx jyfti run --env-var slackWebhookUrl=SLACK_WEBHOOK_URL https://raw.githubusercontent.com/jyfti/jyfti/master/workflows/open-prs-to-slack.json jyfti example-repo
