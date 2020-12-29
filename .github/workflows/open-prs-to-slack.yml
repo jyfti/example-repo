@@ -2,7 +2,7 @@ name: Open PRs to Slack
 
 on:
   schedule:
-    - cron: '0 10 * * *'
+    - cron: "0 10 * * *"
   workflow_dispatch:
 
 jobs:
@@ -20,4 +20,6 @@ jobs:
         run: npm install @jyfti/cli
 
       - name: Run workflow
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: npx jyfti run --env-var slackWebhookUrl=SLACK_WEBHOOK_URL https://raw.githubusercontent.com/jyfti/jyfti/master/workflows/open-prs-to-slack.json jyfti example-repo
