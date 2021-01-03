@@ -22,7 +22,7 @@ jobs:
       - name: Run workflow
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        run: npx jyfti run --env-var slackWebhookUrl=SLACK_WEBHOOK_URL https://raw.githubusercontent.com/jyfti/jyfti/master/workflows/open-prs-to-slack.json jyfti exampel-repo
+        run: npx jyfti run --env-var slackWebhookUrl=SLACK_WEBHOOK_URL https://raw.githubusercontent.com/jyfti/jyfti/master/workflows/open-prs-to-slack.json jyfti example-repo
       
       - uses: actions/upload-artifact@v2
         with:
